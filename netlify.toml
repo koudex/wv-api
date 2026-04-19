@@ -2,22 +2,12 @@
   command = "bun run build"
   publish = "dist"
 
-[dev]
-  command = "bun run dev"
-  port = 3000
-
-# This is the CORRECT way to specify edge functions
 [functions]
   node_bundler = "esbuild"
+  directory = "netlify/functions"
 
-# Edge functions path is relative to project root
-[[edge_functions]]
-  path = "/*"
-  function = "api"
-
-# Redirects (optional, edge_functions already handles routing)
 [[redirects]]
   from = "/*"
-  to = "/.netlify/edge-functions/api"
+  to = "/.netlify/functions/api"
   status = 200
   force = true
