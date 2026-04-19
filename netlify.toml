@@ -1,0 +1,27 @@
+[build]
+  command = "bun run build"
+  publish = "dist"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["hono"]
+
+[[edge_functions]]
+  path = "/*"
+  function = "api"
+
+[dev]
+  command = "bun run dev"
+  port = 3000
+
+# Environment variables
+[build.environment]
+  NODE_VERSION = "20"
+  BUN_VERSION = "1.0.0"
+
+# Redirects (catch-all to edge function)
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/edge-functions/api"
+  status = 200
+  force = true
