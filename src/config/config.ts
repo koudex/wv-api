@@ -10,9 +10,9 @@ const config = {
 
   logLevel: 'INFO',
   enableLogging: false,
-  isProduction: true,
-  isDevelopment: false,
-  isVercel: false,
+  isProduction: process.env.NODE_ENV === 'production',
+  isDevelopment: process.env.NODE_ENV === 'development',
+  isNetlify: process.env.NETLIFY === 'true',
 };
 
 export default config;
