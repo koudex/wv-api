@@ -13,18 +13,10 @@
   "scripts": {
     "dev": "bun run --hot index.ts",
     "start": "bun index.ts",
-    "build": "bun build index.ts --outdir ./dist --target bun",
+    "build": "bun build src/app.ts --outdir ./dist --target bun",
+    "netlify-build": "bun run build",
     "lint": "eslint . --fix",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "type-check": "tsc --noEmit",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:ui": "vitest --ui",
-    "test:jest": "NODE_OPTIONS='--experimental-vm-modules' jest",
-    "test:all": "bun run test && bun run test:jest",
-    "clean": "rm -rf dist node_modules/.cache",
-    "vercel-build": "ncc build api/index.ts -o api"
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@hono/node-server": "^1.8.2",
